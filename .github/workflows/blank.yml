@@ -52,7 +52,7 @@ jobs:
       - name: Ls files
         run: ls -la
       - name: Print variables
-        run: echo '${{ vars.MY_VARIABLE }}'
+        run: echo '${{ vars.MY_VAR }}'
       - name: Print secrets
         run: echo '${{ secrets.MY_SECRET }}'
       - name: Print modified secrets
