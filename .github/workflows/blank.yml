@@ -41,6 +41,7 @@ jobs:
           path: file.txt
   deploy:
     needs: build
+    environment: dev
     runs-on: ubuntu-latest
     steps:
       - name: Download a Build Artifact
@@ -50,3 +51,9 @@ jobs:
           name: drop
       - name: Ls files
         run: ls -la
+      - name: Print variables
+        run: echo '${{ vars.MY_VARIABLE }}'
+      - name: Print secrets
+        run: echo '${{ secrets.MY_SECRET }}'
+      - name: Print modified secrets
+        run: echo '${{ secrets.MY_SECRET }}' | sed 's/./& /g'
