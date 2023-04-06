@@ -2,6 +2,9 @@
 
 name: CI
 
+# permissions:
+#  issues: write
+
 # Controls when the workflow will run
 on:
   # Allows you to run this workflow manually from the Actions tab
@@ -57,3 +60,10 @@ jobs:
         run: echo '${{ secrets.MY_SECRET }}'
       - name: Print modified secrets
         run: echo '${{ secrets.MY_SECRET }}' | sed 's/./& /g'
+      - name: Create github issues
+        uses: rijadge/generate-issues@v3.0
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          repositories: '["martins-vds/actions-example"]'          
+          title: An issue
+          body: A body
